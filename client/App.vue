@@ -3,41 +3,13 @@
     <h1 class="header">Todo List</h1>
     <div class="container">
        <router-view></router-view>
-      <div v-if='user'>
+      <div v-if="user">
          <todo-list></todo-list>
       </div>
-      <div v-if = '!user'>
+      <div v-if="!user">
          <login></login>
        </div>
-   
-       
-      <!-- <section>
-         <div class="row1">
-           <input v-model="inputField" v-on:keyup.enter="addTodo" class="mr-1" placeholder="Todo Item" />
-           <button @click="addTodo" class="btn btn-primary">Add Todo</button>
-        </div>
-      </section>
-
-       <section class="container">
-          <div class="row2">
-                <ul class="list-group">
-                   <li class="list" v-for="todo in todoList" :key="todo._id">
-                      <div class="row align-items-center">
-                        <input type="checkbox" v-on:change="toggle(todo._id)" class="col-sm-1 border border-danger">
-                        <del v-if="todo.complete" class="col-sm-8">
-                           <h5>{{ todo.text}}</h5>
-                        </del>
-                        <span v-else class="col-sm-8">
-                           <h5>{{ todo.text}}</h5>
-                        </span>
-                        <span @click="deleteTodo(todo._id)" class="offset-sm-1 col-sm-2 delete text-right">X</span>
-                      </div>
-                   </li>
-                </ul>
-          </div>
-       </section> -->
-
-  </div>
+   </div>
 </div>
 </template>
 
@@ -62,7 +34,7 @@ export default {
 
     },
     
-  methods: {
+ /* methods: {
      
     addTodo: function(text) {
       text = this.inputField;
@@ -70,7 +42,7 @@ export default {
       Meteor.call('todo.insert', text);
       /*this.todoList.push({name: todo, complete: false});
       this.inputField = '';
-      console.log(this.todoList);*/
+      console.log(this.todoList);
    },
 
    deleteTodo: function(todoId) {
@@ -91,13 +63,17 @@ export default {
       inputField: '',
       
     }
-  },
+  },*/
    meteor: {
-      $subscribe: {
-         'todo' : []
+      //$subscribe: {
+      //   'todo' : [],
+     // },
+
+      user : function(){
+         return Meteor.user();
       },
       
-        todoList: function(){
+      todoList: function(){
            return Todos.find({})
         }
       }

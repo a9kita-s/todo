@@ -1,11 +1,12 @@
 <template>
 
    <div>
+      <div v-if="user">
       <section>
          <div class="row1">
            <input v-model="inputField" v-on:keyup.enter="addTodo" class="mr-1" placeholder="Todo Item" />
            <button @click="addTodo" class="btn btn-primary">Add Todo</button>
-           <button @click="$router.push({ path: '/logout' })" class = "btn btn-primary" >Logout</button>
+           <lo></lo>
         </div>
       </section>
    
@@ -17,10 +18,10 @@
                       <div class="row align-items-center">
                         <input type="checkbox" v-on:change="toggle(todo._id)" class="col-sm-1 border border-danger">
                         <del v-if="todo.complete" class="col-sm-8">
-                           <h5>{{ todo._id}}</h5>
+                           <h5>{{ todo.text}}</h5>
                         </del>
                         <span v-else class="col-sm-8">
-                           <h5>{{ todo._id}}</h5>
+                           <h5>{{ todo.text}}</h5>
                         </span>
                         <span @click="deleteTodo(todo._id)" class="offset-sm-1 col-sm-2 delete text-right">X</span>
                       </div>
@@ -28,7 +29,9 @@
                 </ul>
           </div>
        </section>
+      </div>
    </div>
+
 </template>
 
 <script>
@@ -39,6 +42,11 @@ import Logout from '/imports/ui/logout/logout.vue'
 
 
 export default {
+
+   components: {
+      'lo' : Logout,
+
+   },
    methods: {
      
     addTodo: function(text) {
@@ -65,12 +73,15 @@ export default {
   },
    meteor: {
       $subscribe: {
-         'todo' : []
+         'todo' : [],
       },
       
         todoList: function(){
            return Todos.find({})
-        }
+        },
+      user : function(){
+         return Meteor.user();
       }
+   }
 }
 </script>

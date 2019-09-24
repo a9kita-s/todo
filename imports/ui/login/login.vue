@@ -1,5 +1,6 @@
 <template>
 <div>
+  <div v-if="!user">
   <form >
     <h3>Login</h3>
     <label>username</label>
@@ -32,6 +33,13 @@ export default {
       
     }
     
-    }
+    },
+     meteor: {
+      
+
+      user : function(){
+         return Meteor.user();
+      }
+     },
 }
 </script>

@@ -11,7 +11,7 @@ import { Accounts } from 'meteor/accounts-base'
 export default {
   methods: {
     logout() {
-      this.$store.dispatch('logout')
+      Meteor.logout()
   	}
   }
 }

@@ -4,8 +4,6 @@
     <h3>Register</h3>
     <label>username</label>
     <input v-model="formData.username"/>
-    <label>email</label>
-    <input v-model="formData.email"/>
     <label>password</label>
     <input v-model="formData.password" />
     <button @submit.prevent="submitForm">Register</button>
@@ -21,7 +19,6 @@ export default {
     return {
       formData: {
         username: '',
-        email:'',
         password: ''
       }
     }
