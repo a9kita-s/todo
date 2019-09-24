@@ -3,7 +3,8 @@
    <div>
       <section>
          <div class="row1">
-           <input v-model="inputField" v-on:keyup.enter="addTodo" class="mr-1" placeholder="Todo Item" />
+           <input v-model="inputField" v-on:keyup.enter="addTodo" class="mr-1" placeholder="Todo Item" @focus="magic_flag = true"
+  @blur="magic_flag = false"/>
            <button @click="addTodo" class="btn btn-primary">Add Todo</button>
            <lo></lo>
         </div>
@@ -16,7 +17,7 @@
                    <li class="list" v-for="todo in todoList" :key="todo._id">
                       <div class="row align-items-center">
                         <input type="checkbox" v-on:change="toggle(todo._id)" class="col-sm-1 border border-danger">
-                        <del v-if="todo.complete" class="col-sm-8">
+                        <del v-if="todo.checked" class="col-sm-8">
                            <h5>{{ todo.text}}</h5>
                         </del>
                         <span v-else class="col-sm-8">
@@ -51,6 +52,8 @@ export default {
       text = this.inputField;
 
       Meteor.call('todo.insert', text);
+
+      this.inputField = '';
    },
 
    deleteTodo: function(todoId) {

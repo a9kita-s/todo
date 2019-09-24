@@ -16,7 +16,7 @@ RouterFactory.configure((factory => {
   // Simple routes
   factory.addRoutes([
     {
-      path: '/login',
+      path: '/',
       name: 'login',
       component: Login,
     },
@@ -26,7 +26,7 @@ RouterFactory.configure((factory => {
       component: Register,
     },
     {
-      path: '/',
+      path: '/list',
       name: 'list',
       component : List,
     }

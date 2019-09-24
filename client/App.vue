@@ -2,12 +2,8 @@
 <div id="app">
     <h1 class="header">Todo List</h1>
     <div class="container">
-       <router-view v-if="user">
-          <todo-list></todo-list>
-       </router-view>
-      <router-view v-else>
-         <login></login>
-      </router-view>
+       
+      <router-view></router-view>
    </div>
 </div>
 </template>
