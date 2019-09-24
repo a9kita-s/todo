@@ -7,8 +7,6 @@ Meteor.methods({
       check(text, String);
 
 
-      console.log(text);
-  
       Todos.insert({
   
         text,

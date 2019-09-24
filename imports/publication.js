@@ -4,7 +4,7 @@ if (Meteor.isServer) {
   
     Meteor.publish('todo', function todoPublication() {
 
-      return Todos.find({});
+      return Todos.find({owner: Meteor.userId()});
 
   
     });
