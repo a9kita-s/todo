@@ -5,10 +5,7 @@ Meteor.methods({
     'todo.insert'(text) {
   
       check(text, String);
-      if (! Meteor.userId()) {
 
-        throw new Meteor.Error('not-authorized');
-      }   
 
       console.log(text);
   

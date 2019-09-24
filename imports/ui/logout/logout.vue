@@ -11,7 +11,9 @@ import { Accounts } from 'meteor/accounts-base'
 export default {
   methods: {
     logout() {
-      Meteor.logout()
+      Meteor.logout(error => {
+      	error ? console.log(error.reason) : this.$router.push({path : '/login'})
+    	})
   	}
   }
 }

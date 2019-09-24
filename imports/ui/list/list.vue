@@ -1,7 +1,6 @@
 <template>
 
    <div>
-      <div v-if="user">
       <section>
          <div class="row1">
            <input v-model="inputField" v-on:keyup.enter="addTodo" class="mr-1" placeholder="Todo Item" />
@@ -30,7 +29,6 @@
           </div>
        </section>
       </div>
-   </div>
 
 </template>
 
@@ -74,14 +72,12 @@ export default {
    meteor: {
       $subscribe: {
          'todo' : [],
+         'users' : [],
       },
       
         todoList: function(){
            return Todos.find({})
         },
-      user : function(){
-         return Meteor.user();
-      }
    }
 }
 </script>

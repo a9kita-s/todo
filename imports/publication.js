@@ -8,4 +8,9 @@ if (Meteor.isServer) {
 
   
     });
+    Meteor.publish('users', function userPublication() {
+
+      return Meteor.users.find({});
+
+    });
 }

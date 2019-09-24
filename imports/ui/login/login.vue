@@ -1,13 +1,13 @@
 <template>
 <div>
-  <div v-if="!user">
+  
   <form >
     <h3>Login</h3>
     <label>username</label>
     <input v-model="formData.username" />
     <label>password</label>
     <input v-model="formData.password" />
-    <button @submit.prevent="submitForm">Login</button>\
+    <button @click.prevent="submitForm">Login</button>\
     <button @click="$router.push({ path: '/register' })" class = "btn btn-primary" >Register</button>
   </form>
 </div>
@@ -27,19 +27,14 @@ export default {
   },
   methods: {
     submitForm : function(){
-      var x=this.formdata.username;
+      var x=this.formData.username;
       console.log(x);
-      Meteor.loginWithPassword(this.formdata.username,this.formdata.password)
+      Meteor.loginWithPassword(this.formData.username,this.formData.password, error => {
+      	error ? console.log(error.reason) : this.$router.push({path : '/'})
+    	})
       
     }
     
-    },
-     meteor: {
-      
-
-      user : function(){
-         return Meteor.user();
-      }
-     },
+  },
 }
 </script>
