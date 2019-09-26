@@ -30,7 +30,7 @@ export default {
       var x=this.formData.username;
       console.log(x);
       Meteor.loginWithPassword(this.formData.username,this.formData.password, error => {
-      	error ? console.log(error.reason) : this.$router.push({path : '/list'})
+      	error ? console.log(error.reason) : this.$router.push({path : '/'})
     	})
       
     }

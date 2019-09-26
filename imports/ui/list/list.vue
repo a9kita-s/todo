@@ -37,10 +37,21 @@
 import { Todos } from '/imports/collection.js';
 import { Meteor } from "meteor/meteor";
 import Logout from '/imports/ui/logout/logout.vue'
-
+import Login from '/imports/ui/login/login.vue'
 
 
 export default {
+
+   mounted : function() {
+      if (Meteor.userId()) {
+         return this.$router.push({path : '/'});
+      }
+      else {
+         return this.$router.push({path : '/login'});
+      }
+      
+
+   },
 
    components: {
       'lo' : Logout,
@@ -78,9 +89,14 @@ export default {
          'users' : [],
       },
       
-        todoList: function(){
+      todoList: function(){
            return Todos.find({})
         },
+      
+
+      user : function(){
+         return Meteor.userId();
+      },
    }
 }
 </script>

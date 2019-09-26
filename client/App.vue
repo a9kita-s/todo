@@ -24,15 +24,6 @@ export default {
         'login' : Login,
 
    },
-    
-
-   meteor: {
-
-      user : function(){
-         return Meteor.userId();
-      },
-      
-   }
 }
 </script>
 

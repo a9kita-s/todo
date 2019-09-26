@@ -12,7 +12,7 @@ export default {
   methods: {
     logout() {
       Meteor.logout(error => {
-      	error ? console.log(error.reason) : this.$router.push({path : '/'})
+      	error ? console.log(error.reason) : this.$router.push({path : '/login'})
     	})
   	}
   }
