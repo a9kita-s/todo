@@ -4,7 +4,6 @@ import { RouterFactory, nativeScrollBehavior } from 'meteor/akryum:vue-router2'
 
 import Login from '/imports/ui/login/login.vue'
 import Register from '/imports/ui/register/register.vue'
-import Logout from "/imports/ui/logout/logout.vue";
 import List from '/imports/ui/list/list.vue'
 
 const routerFactory = new RouterFactory({
