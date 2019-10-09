@@ -1,14 +1,12 @@
-<template>
-<div>
-  <form>
-    <h3>Register</h3>
-    <label>username</label>
-    <input v-model="formData.username"/>
-    <label>password</label>
-    <input v-model="formData.password" />
-    <button @click.prevent="submitForm">Register</button>
-  </form>
-</div>
+<template lang="pug">
+div
+  form
+    h3 Register
+    label username
+    input(v-model="formData.username")
+    label password
+    input(v-model="formData.password")
+    button(@click.prevent="submitForm") Register
 </template>
 
 <script>

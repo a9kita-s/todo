@@ -1,5 +1,5 @@
-<template>
-<button @click="logout">Logout</button>
+<template lang="pug">
+  button(@click="logout") Logout
 </template>
 
 <script>

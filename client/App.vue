@@ -1,11 +1,7 @@
-<template>
-<div id="app">
-    <h1 class="header">Todo List</h1>
-    <div class="container">
-       
-      <router-view></router-view>
-   </div>
-</div>
+<template lang="pug">
+#app
+   h1.header Todo List
+   router-view
 </template>
 
 <script>

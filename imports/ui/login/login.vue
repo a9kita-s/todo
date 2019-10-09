@@ -1,16 +1,14 @@
-<template>
-<div>
+<template lang="pug">
+div
   
-  <form >
-    <h3>Login</h3>
-    <label>username</label>
-    <input v-model="formData.username" />
-    <label>password</label>
-    <input v-model="formData.password" />
-    <button @click.prevent="submitForm">Login</button>\
-    <button @click="$router.push({ path: '/register' })" class = "btn btn-primary" >Register</button>
-  </form>
-</div>
+  form
+    h3 Login
+    label username
+    input(v-model="formData.username")
+    label password
+    input(v-model="formData.password")
+    button(@click.prevent="submitForm") Login
+    button(@click="$router.push({ path: '/register' })" class = "btn btn-primary") Register
 </template>
 
 <script>
