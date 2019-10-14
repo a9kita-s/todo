@@ -9,25 +9,21 @@ div
     button(@click.prevent="submitForm") Register
 </template>
 
-<script>
+<script lang="coffee">
 import { Meteor } from "meteor/meteor"
 import { Accounts } from 'meteor/accounts-base'
-export default {
-  data() {
-    return {
-      formData: {
-        username: '',
-        password: ''
-      }
-    }
-  },
+export default
+  data : ->
+    formData:
+      username: ''
+      password: ''
 
-  methods: {
-	  submitForm : function(){
-		  Accounts.createUser(this.formData , error => {
-      	error ? console.log(error.reason) : this.$router.push({path : '/login'})
-    	})
-	  }
-  }
-}
+  methods:
+    submitForm : ->
+      Accounts.createUser(this.formData , (error) =>
+        if error
+          console.log(error.reason)
+        else
+          @$router.push({path : '/login'})
+      )
 </script>

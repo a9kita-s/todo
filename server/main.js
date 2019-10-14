@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
-import "/imports/collection.js";
-import "/imports/methods.js";
-import "/imports/publication.js";
+import "/imports/collection.coffee";
+import "/imports/methods.coffee";
+import "/imports/publication.coffee";
 
 
 Meteor.startup(() => {

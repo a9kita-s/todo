@@ -2,19 +2,19 @@
   button(@click="logout") Logout
 </template>
 
-<script>
+<script lang="coffee">
 
-import { Meteor } from "meteor/meteor";
+import { Meteor } from "meteor/meteor"
 import { Accounts } from 'meteor/accounts-base'
 
 
-export default {
-  methods: {
-    logout() {
-      Meteor.logout(error => {
-      	error ? console.log(error.reason) : this.$router.push({path : '/login'})
-    	})
-  	}
-  }
-}
+export default
+  methods:
+    logout: ->
+      Meteor.logout((error) =>
+        if error
+          console.log(error.reason)
+        else
+          @$router.push({path : '/login'})
+      )
 </script>

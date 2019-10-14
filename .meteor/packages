@@ -23,3 +23,5 @@ accounts-base
 accounts-password
 akryum:vue-router2
 akryum:vue-pug
+akryum:vue-coffee
+coffeescript

@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Todos } from '/imports/collection.js';
+import { Todos } from '/imports/collection.coffee';
 import { Meteor } from "meteor/meteor";
 import Login from '/imports/ui/login/login.vue'
 import List from '/imports/ui/list/list.vue'

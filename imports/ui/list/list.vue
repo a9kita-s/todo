@@ -14,59 +14,40 @@
          span(@click="deleteTodo(todo._id)" class="offset-sm-1 col-sm-2 delete text-right") X
 </template>
 
-<script>
-import { Todos } from '/imports/collection.js';
-import { Meteor } from "meteor/meteor";
+
+<script lang="coffee">
+import { Todos } from '/imports/collection.coffee'
+import { Meteor } from "meteor/meteor"
 import Logout from '/imports/ui/logout/logout.vue'
 import Login from '/imports/ui/login/login.vue'
-export default {
-   mounted : function() {
-      if (Meteor.userId()) {
-         return this.$router.push({path : '/'});
-      }
-      else {
-         return this.$router.push({path : '/login'});
-      }
-      
-   },
-   components: {
-      'lo' : Logout,
-   },
-   methods: {
-     
-    addTodo: function(text) {
-      text = this.inputField;
-      Meteor.call('todo.insert', text);
-      this.inputField = '';
-   },
-   deleteTodo: function(todoId) {
-      Meteor.call('todo.remove', todoId);
-   },
-   toggle: function(todoId) {
-      Meteor.call('todo.setChecked', todoId, !this.checked);
-      //todo.complete = !todo.complete;
-   }
-  },
-   
-  data () {
-    return {
-      inputField: '',
-      
-    }
-  },
-   meteor: {
-      $subscribe: {
-         'todo' : [],
-         'users' : [],
-      },
-      
-      todoList: function(){
-           return Todos.find({})
-        },
-      
-      user : function(){
-         return Meteor.userId();
-      },
-   }
-}
+
+
+export default
+  mounted : ->
+    if Meteor.userId()
+      @$router.push({path : '/'})
+    else
+      @$router.push({path : '/login'})
+  components:
+    'lo' : Logout
+  methods:
+   addTodo: (text) ->
+      text = @inputField
+      Meteor.call('todo.insert', text)
+      @inputField = ''
+   deleteTodo: (todoId) ->
+      Meteor.call('todo.remove', todoId)
+   toggle: (todoId) ->
+      Meteor.call('todo.setChecked', todoId, !@checked)
+      #todo.complete = !todo.complete
+  data : ->
+     inputField: ''
+  meteor:
+    $subscribe:
+      'todo' : []
+      'users' : []
+    todoList: ->
+      Todos.find({})
+    user : ->
+      Meteor.userId()
 </script>
